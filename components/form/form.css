@@ -1,0 +1,7 @@
+.form {
+  padding: 10px;
+}
+
+.form__area {
+   resize: vertical;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "components_2510_1930",
+  "version": "1.0.0",
+  "description": "Учебный проект learn.javascript.ru",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo \"Run linter... \n\" && jshint *.js && echo \"CODE IS OK!\"",
+    "start": "npm run lint && static .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iketari/components_2510_1930.git"
+  },
+  "author": "Artsiom Mezin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iketari/components_2510_1930/issues"
+  },
+  "homepage": "https://github.com/iketari/components_2510_1930#readme"
+}
