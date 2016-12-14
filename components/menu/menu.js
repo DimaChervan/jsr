@@ -16,6 +16,7 @@
 			this.data = data;
 			this.onPick = onPick;
 
+			this._clearSelectedIndex();
 			this.render();
 			this._initEvents();
 		}
@@ -62,7 +63,7 @@
 		 *
 		 * @param  {number} removedItemIndex
 		 */
-		removeItem (removedItemIndex) {
+		removeItem(removedItemIndex) {
 			this.data.items = this.data.items.filter((item, index) => {
 				return index !== removedItemIndex;
 			});
@@ -70,19 +71,45 @@
 			this.render();
 		}
 
-
+		/**
+		 * _clearSelectedIndex
+		 */
+		_clearSelectedIndex() {
+			this.selectedIndex = null;
+		}
 
 		/**
-		 * addItem - add new item into menu list
+		 * changeItems - delegate to add or edit item
 		 *
-		 * @param  {Object} itemData description
+		 * @param  {Object} itemData
 		 */
-		addItem (itemData) {
-			this.data.items.push(itemData);
-
+		changeItems(itemData) {
+			this[this.selectedIndex === null ? '_addItem' : '_editItem'](itemData);
+			this._clearSelectedIndex();
 			this.render();
 		}
 
+		/**
+		 * _addItem - add new item into menu list
+		 *
+		 * @param  {Object} itemData description
+		 */
+		_addItem(itemData) {
+			this.data.items.push(itemData);
+		}
+
+		/**
+		 * _editItem - edit item in menu list
+		 *
+		 * @param  {Object} itemData
+		 */
+		_editItem(itemData) {
+			this.data.items = this.data.items.map((item, index) => {
+				if (this.selectedIndex !== index) return item;
+
+				return itemData;
+			});
+		}
 
 		/**
 		 * _onPickClick - actions during click on menu item
@@ -92,6 +119,7 @@
 		_onPickClick(item) {
 			let index = this._getItemIndex(item);
 			let data = this.data.items[index];
+			this.selectedIndex = index;
 			this.onPick(
 				Object.assign({}, data, {index})
 			);

@@ -41,7 +41,7 @@
     el: document.querySelector('.js-form'),
     data: {},
     onSubmit (data) {
-      menu.addItem(data);
+      menu.changeItems(data);
     }
   });
 

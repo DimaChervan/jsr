@@ -16,7 +16,8 @@
 			this.data = data;
 			this.onSubmit = onSubmit;
 
-			this._init();
+			this.render();
+			this._initEvents();
 		}
 
 
@@ -81,17 +82,6 @@
 			this.render();
 		}
 
-
-		/**
-		 * _init - initialize component
-		 *
-		 */
-		_init() {
-			this.render();
-			this.form = this.el.querySelector('form');
-			this._initEvents();
-		}
-
 		/**
 		 * _initEvents - initialize component events
 		 *
@@ -126,7 +116,8 @@
 		 *
 		 */
 		_clearForm() {
-			this.form.reset();
+			this.data = {};
+			this.render();
 		}
 
 	}
