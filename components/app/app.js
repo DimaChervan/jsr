@@ -1,41 +1,41 @@
 (function () {
- 	'use strict';
+  'use strict';
 
-	//import
-	let Menu = window.Menu;
-	let Form = window.Form;
+//import
+  let Menu = window.Menu;
+  let Form = window.Form;
 
-	let menu = new Menu({
-		el: document.querySelector('.js-menu'),
-		data: {
-			title: 'Component Application',
-			items: [
-				{
-					href: 'https://vk.com',
-					anchor: 'vk.com',
+  let menu = new Menu({
+    el: document.querySelector('.js-menu'),
+    data: {
+      title: 'Component Application',
+      items: [
+        {
+          href: 'https://vk.com',
+          anchor: 'vk.com',
           details: ''
-				},
-				{
-					href: 'https://ok.ru',
-					anchor: 'ok.ru',
+        },
+        {
+          href: 'https://ok.ru',
+          anchor: 'ok.ru',
           details: 'Какой-то странный сайт'
-				},
-				{
-					href: 'https://yahoo.com',
-					anchor: 'yahoo.com',
+        },
+        {
+          href: 'https://yahoo.com',
+          anchor: 'yahoo.com',
           details: 'Какой-то странный сайт'
-				},
-				{
-					href: 'https://yandex.ru',
-					anchor: 'yandex.ru',
+        },
+        {
+          href: 'https://yandex.ru',
+          anchor: 'yandex.ru',
           details: 'Какой-то странный сайт'
-				}
-			]
-		},
+        }
+      ]
+    },
     onPick (data) {
       form.setData(data);
     }
-	});
+  });
 
   let form = new Form({
     el: document.querySelector('.js-form'),
@@ -45,6 +45,6 @@
     }
   });
 
-	window.menu = menu;
-	window.form = form;
+  window.menu = menu;
+  window.form = form;
 })();
