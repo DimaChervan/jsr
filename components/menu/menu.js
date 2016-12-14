@@ -132,9 +132,10 @@
 		 * @param  {Object} item description
 		 */
 		_onRemoveClick(item) {
-			this.removeItem(
-				this._getItemIndex(item)
-			);
+			let index = this._getItemIndex(item);
+
+			this.removeItem(index);
+			this._clearSelectedIndex();
 		}
 
 		/**
