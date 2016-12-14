@@ -19,8 +19,10 @@
 			this._init();
 		}
 
+
 		/**
-		 * Преобразование данных компоненты в верстку!
+		 * render - converts template into html
+		 *
 		 */
 		render () {
 			this.el.innerHTML = `
@@ -36,14 +38,31 @@
 			`;
 		}
 
+		/**
+		 * _filterEmptyValue - filter empty value
+		 *
+		 * @param  {string} value
+		 * @returns {string}
+		 */
 		_filterEmptyValue(value) {
 			return value || '';
 		}
 
+		/**
+		 * _getValueByName - return value by element name
+		 *
+		 * @param  {string} name
+		 * @returns {string}
+		 */
 		_getValueByName(name) {
 			return this.el.querySelector(`[name="${name}"]`).value;
 		}
 
+		/**
+		 * _getData - get form data
+		 *
+		 * @returns {Object}
+		 */
 		_getData() {
 			return {
 				href: this._getValueByName('url'),
@@ -52,27 +71,41 @@
 			};
 		}
 
+		/**
+		 * setData - set data into form
+		 *
+		 * @param  {Object} data description
+		 */
 		setData(data) {
 			this.data = data;
 			this.render();
 		}
 
+
 		/**
-		* Развешиваем события
-		*/
+		 * _init - initialize component
+		 *
+		 */
 		_init() {
 			this.render();
 			this.form = this.el.querySelector('form');
 			this._initEvents();
 		}
 
+		/**
+		 * _initEvents - initialize component events
+		 *
+		 */
 		_initEvents() {
 			this.el.addEventListener('submit', this._onSubmit.bind(this));
 		}
 
+
 		/**
-		* "Отправка" формы
-		*/
+		 * _onSubmit - actions on form submit
+		 *
+		 * @param  {Object} event description
+		 */
 		_onSubmit(event) {
 			event.preventDefault();
 
@@ -80,10 +113,18 @@
 			this._clearForm();
 		}
 
+		/**
+		 * _fireSubmit - send data out component
+		 *
+		 */
 		_fireSubmit() {
 			this.onSubmit(this._getData());
 		}
 
+		/**
+		 * _clearForm - reset form data
+		 *
+		 */
 		_clearForm() {
 			this.form.reset();
 		}

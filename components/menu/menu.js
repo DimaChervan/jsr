@@ -20,10 +20,18 @@
 			this._initEvents();
 		}
 
-		/**
-		 * Преобразование данных компоненты в верстку!
+    /**
+		 * render - converts template into html
+		 *
 		 */
 		render () {
+
+			/**
+			 * getMenuItems - get html string of
+			 *
+			 * @param  {Object} items Array of items
+			 * @returns {string}
+			 */
 			function getMenuItems (items) {
 				return items.map((item, index) => {
 					return `<li class="pure-menu-item" data-index="${index}">
@@ -48,8 +56,10 @@
 			`;
 		}
 
+
 		/**
-		 * Удаляем пункт меню из данных
+		 * removeItem - remove item from menu list
+		 *
 		 * @param  {number} removedItemIndex
 		 */
 		removeItem (removedItemIndex) {
@@ -61,9 +71,11 @@
 		}
 
 
+
 		/**
-		 * Добавляем пункт меню из данных
-		 * @param  {Object} itemData
+		 * addItem - add new item into menu list
+		 *
+		 * @param  {Object} itemData description
 		 */
 		addItem (itemData) {
 			this.data.items.push(itemData);
@@ -71,10 +83,12 @@
 			this.render();
 		}
 
+
 		/**
-		* Выбор элемента меню
-		* @param  {HTMLElement} item
-		*/
+		 * _onPickClick - actions during click on menu item
+		 *
+		 * @param  {Object} item description
+		 */
 		_onPickClick(item) {
 			let index = this._getItemIndex(item);
 			let data = this.data.items[index];
@@ -83,33 +97,43 @@
 			);
 		}
 
+
 		/**
-		* Удаления элемента меню
-		* @param  {HTMLElement} item
-		* @private
-		*/
+		 * _onRemoveClick - description
+		 *
+		 * @param  {Object} item description
+		 */
 		_onRemoveClick(item) {
 			this.removeItem(
 				this._getItemIndex(item)
 			);
 		}
 
+		/**
+		 * _getItemIndex - get index by menu item
+		 *
+		 * @param  {Object} item
+		 * @returns {number}
+		 */
 		_getItemIndex(item) {
 			return parseInt(item.parentNode.dataset.index, 10);
 		}
 
+
 		/**
-		* Развешиваем события
-		*/
+		 * _initEvents - initialize component events
+		 *
+		 */
 		_initEvents() {
 			this.el.addEventListener('click', this._onClick.bind(this));
 		}
 
+
 		/**
-		* Клик в любую область меню
-		* @param {MouseEvent} event
-		* @private
-		*/
+		 * _onClick - actions during click on component
+		 *
+		 * @param  {Object} event
+		 */
 		_onClick (event) {
 			let item = event.target;
 
