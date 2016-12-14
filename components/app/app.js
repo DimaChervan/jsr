@@ -33,7 +33,7 @@
 			]
 		},
     onPick (data) {
-      console.log(data);
+      form.setData(data);
     }
 	});
 

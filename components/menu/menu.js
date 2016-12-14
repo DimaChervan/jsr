@@ -78,11 +78,9 @@
 		_onPickClick(item) {
 			let index = this._getItemIndex(item);
 			let data = this.data.items[index];
-
-			this.onPick({
-				index,
-				data
-			});
+			this.onPick(
+				Object.assign({}, data, {index})
+			);
 		}
 
 		/**

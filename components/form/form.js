@@ -26,14 +26,18 @@
 			this.el.innerHTML = `
 					<form action="/" class="form pure-form pure-form-stacked">
 						<div class="pure-g">
-							<input name="url" placeholder="url" class="form__input pure-input-1" />
-							<input name="anchor" placeholder="anchor" class="form__input pure-input-1" />
-							<textarea name="description" placeholder="description" class="form__area pure-input-1"></textarea>
+							<input name="url" placeholder="url" class="form__input pure-input-1" value="${this._filterEmptyValue(this.data.href)}" />
+							<input name="anchor" placeholder="anchor" class="form__input pure-input-1" value="${this._filterEmptyValue(this.data.anchor)}" />
+							<textarea name="description" placeholder="description" class="form__area pure-input-1">${this._filterEmptyValue(this.data.details)}</textarea>
 
 							<button type="submit" class="pure-button pure-button-primary pure-input-1">Сохранить</button>
 						</div>
 					</form>
 			`;
+		}
+
+		_filterEmptyValue(value) {
+			return value || '';
 		}
 
 		_getValueByName(name) {
@@ -46,6 +50,11 @@
 				anchor: this._getValueByName('anchor'),
 				details: this._getValueByName('description')
 			};
+		}
+
+		setData(data) {
+			this.data = data;
+			this.render();
 		}
 
 		/**
