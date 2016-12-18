@@ -1,6 +1,7 @@
 (function() {
 	'use strict';
 
+	let tmpl = window.formTpl;
 	/**
 	 * @class Form
 	 * Компонента "Форма"
@@ -15,6 +16,7 @@
 			this.el = el;
 			this.data = data;
 			this.onSubmit = onSubmit;
+			this.tmpl = tmpl;
 
 			this.render();
 			this._initEvents();
@@ -26,17 +28,7 @@
 		 *
 		 */
 		render () {
-			this.el.innerHTML = `
-					<form action="/" class="form pure-form pure-form-stacked">
-						<div class="pure-g">
-							<input name="url" placeholder="url" class="form__input pure-input-1" value="${this._filterEmptyValue(this.data.href)}" />
-							<input name="anchor" placeholder="anchor" class="form__input pure-input-1" value="${this._filterEmptyValue(this.data.anchor)}" />
-							<textarea name="description" placeholder="description" class="form__area pure-input-1">${this._filterEmptyValue(this.data.details)}</textarea>
-
-							<button type="submit" class="pure-button pure-button-primary pure-input-1">Сохранить</button>
-						</div>
-					</form>
-			`;
+			this.el.innerHTML = this.tmpl(this.data);
 		}
 
 		/**

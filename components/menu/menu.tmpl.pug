@@ -1,0 +1,7 @@
+div.menu.pure-menu.custom-restricted-width
+  span.menu__title.pure-menu-heading=title
+  ul.menu__list.pure-menu-list
+    each item, index in items
+      li.pure-menu-item(data-index=index)
+        a.pure-menu-link(href=item.href data-action="pick")=item.anchor
+        i.close(data-action="remove")

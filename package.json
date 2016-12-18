@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "echo \"Run linter... \n\" && jshint *.js && echo \"CODE IS OK!\"",
+    "pug": "pug components/menu/menu.tmpl.pug -c -O "{\"name\": \"menuTpl\"}" --no-debug && pug components/form/form.tmpl.pug -c -O "{\"name\": \"formTpl\"}" --no-debug",
     "start": "npm run lint && static .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/iketari/components_2510_1930/issues"
   },
-  "homepage": "https://github.com/iketari/components_2510_1930#readme"
+  "homepage": "https://github.com/iketari/components_2510_1930#readme",
+  "dependencies": {
+    "pug": "^2.0.0-beta6"
+  }
 }
